@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Button, Header } from "../../Styles/Style";
 import { ContextProvider } from "../../context/Context";
 import {
@@ -7,10 +7,17 @@ import {
 	useLocation,
 	useNavigate,
 } from "react-router-dom";
+import LoaderInline from "../LoaderInline/LoaderInline";
 
 export default function HeaderComp() {
-	const { searchText, setSearchText, fetchData } =
-		useContext(ContextProvider);
+	const {
+		setSearchText,
+		isLogged,
+		setIsLogged,
+		userObj,
+		setIsLoading,
+		isLoading,
+	} = useContext(ContextProvider);
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -28,12 +35,8 @@ export default function HeaderComp() {
 		setSearchText(e.target.value);
 	};
 
-	const requestApi = () => {
-		if (searchText) {
-			navigate("/search");
-		} else {
-			return alert("Digite algo !");
-		}
+	const exitSession = () => {
+		setIsLogged(false);
 	};
 
 	return (
@@ -43,30 +46,40 @@ export default function HeaderComp() {
 			</Link>
 			<div className="links-header">
 				<ul>
-					<NavLink activeclassname to="/mouses">
+					<NavLink activeclassname="true" to="/mouses">
 						Mouses
 					</NavLink>
-					<NavLink activeclassname to="/headsets">
+					<NavLink activeclassname="true" to="/headsets">
 						Headsets
 					</NavLink>
-					<NavLink activeclassname to="/teclados">
+					<NavLink activeclassname="true" to="/teclados">
 						Teclados
 					</NavLink>
-					<NavLink activeclassname to="/monitores">
+					<NavLink activeclassname="true" to="/monitores">
 						Monitores
 					</NavLink>
 				</ul>
 			</div>
-			<div className="login-header">
-				<NavLink to="/login">
-					<Button className="login-btn">Login</Button>
-				</NavLink>
-				<NavLink to="/register">
-					<Button border={false} className="register-btn">
-						Cadastro
-					</Button>
-				</NavLink>
-			</div>
+			{isLogged ? (
+				<>
+					<span>{userObj.nameUser}</span>
+					<Button onClick={exitSession}>Sair</Button>
+				</>
+			) : (
+				<div className="login-header">
+					<NavLink to="/login">
+						<Button className="login-btn">Logar</Button>
+					</NavLink>
+					<NavLink to="/register">
+						<Button
+							border={false}
+							className="register-btn"
+						>
+							Cadastro
+						</Button>
+					</NavLink>
+				</div>
+			)}
 		</Header>
 	);
 }

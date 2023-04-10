@@ -142,7 +142,7 @@ export const Section = styled.section`
 	.left-buy_page,
 	.right-buy_page {
 		background: white;
-		height: 85vh;
+		height: 75vh;
 		padding: 2rem;
 		box-shadow: 1px 2px 3px #72727275;
 		border-radius: 5px;
@@ -263,6 +263,7 @@ export const Button = styled.button`
 		props.border === false ? "" : "1px solid white"};
 	color: ${(props) => (props.colorBtn ? props.colorBtn : "white")};
 	transition: 0.5s;
+	position: relative;
 
 	&:hover {
 		background-color: #0000006c;

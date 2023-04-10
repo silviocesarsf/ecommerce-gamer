@@ -32,7 +32,7 @@ export default function BuyPage() {
 		} else {
 			alert("Você precisa logar!");
 			setTimeout(() => {
-				navigate("");
+				navigate("/login");
 			}, [2000]);
 		}
 	};

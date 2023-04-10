@@ -43,6 +43,16 @@ export const GlobalStyles = createGlobalStyle`
         transform: translate(-50%, -50%);
     }
 
+    .c-loader {
+        text-align: center;
+        animation: is-rotating 1s infinite;
+        border: 2px solid #e5e5e5;
+        border-radius: 50%;
+        border-top-color: #7e7e7e;
+        height: 20px;
+        width: 20px;
+    }
+
     .search-btn {
         font-size: 1.2em;
         color: black;
@@ -51,6 +61,12 @@ export const GlobalStyles = createGlobalStyle`
         right: 4%;
         cursor: pointer;
     }
+
+    @keyframes is-rotating {
+    to {
+        transform: rotate(1turn);
+    }
+    }   
 
     span {
         text-decoration: underline;

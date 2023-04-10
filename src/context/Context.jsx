@@ -9,6 +9,17 @@ export const Context = ({ children }) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [isModal, setIsModal] = useState(false);
 	const [isLogged, setIsLogged] = useState(false);
+	const [emailLogin, setEmailLogin] = useState("");
+	const [passwordLogin, setPasswordLogin] = useState("");
+	const [emailRegister, setEmailRegister] = useState("");
+	const [passwordRegister, setPasswordRegister] = useState("");
+	const [passwordConfirm, setPasswordConfirm] = useState("");
+	const [nameRegister, setNameRegister] = useState("");
+	const userObj = {
+		nameUser: localStorage.getItem("name_user"),
+		emailUser: localStorage.getItem("email_user"),
+		passwordUser: localStorage.getItem("password_user"),
+	};
 
 	const fetchData = (searchTerm) => {
 		fetch(
@@ -42,6 +53,19 @@ export const Context = ({ children }) => {
 				isModal,
 				setIsLogged,
 				isLogged,
+				emailLogin,
+				setEmailLogin,
+				passwordLogin,
+				setPasswordLogin,
+				emailRegister,
+				setEmailRegister,
+				passwordRegister,
+				setPasswordRegister,
+				passwordConfirm,
+				setPasswordConfirm,
+				nameRegister,
+				setNameRegister,
+				userObj,
 			}}
 		>
 			{children}

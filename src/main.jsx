@@ -16,6 +16,8 @@ import Headsets from "./pages/Headsets";
 import Teclados from "./pages/Teclados";
 import Monitores from "./pages/Monitores";
 import BuyPage from "./pages/BuyPage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter([
 	{
@@ -45,6 +47,14 @@ const router = createBrowserRouter([
 			{
 				path: "/buypage",
 				element: <BuyPage />,
+			},
+			{
+				path: "login",
+				element: <Login />,
+			},
+			{
+				path: "register",
+				element: <Register />,
 			},
 		],
 	},

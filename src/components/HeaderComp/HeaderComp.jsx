@@ -39,7 +39,7 @@ export default function HeaderComp() {
 	return (
 		<Header style={changeStyle}>
 			<Link to="/" className="logo-header">
-				<h2>Katchau</h2>
+				<h2>ByteLand</h2>
 			</Link>
 			<div className="links-header">
 				<ul>

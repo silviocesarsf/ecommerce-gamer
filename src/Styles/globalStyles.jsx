@@ -48,7 +48,6 @@ export const GlobalStyles = createGlobalStyle`
 
     span {
         text-decoration: underline;
-        font-weight: bold;
         cursor: pointer;
     }
 

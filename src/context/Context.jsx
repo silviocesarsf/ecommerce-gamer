@@ -7,6 +7,8 @@ export const Context = ({ children }) => {
 	const [dataApi, setDataApi] = useState([]);
 	const [isHome, setIsHome] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const [isModal, setIsModal] = useState(false);
+	const [isLogged, setIsLogged] = useState(false);
 
 	const fetchData = (searchTerm) => {
 		fetch(
@@ -36,6 +38,10 @@ export const Context = ({ children }) => {
 				setIsHome,
 				isLoading,
 				setIsLoading,
+				setIsModal,
+				isModal,
+				setIsLogged,
+				isLogged,
 			}}
 		>
 			{children}

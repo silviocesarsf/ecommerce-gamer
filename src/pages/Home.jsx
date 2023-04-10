@@ -4,7 +4,6 @@ import mouseHero from "../assets/mouse_g502.png";
 import mouseGpro from "../assets/mouse_gpro.png";
 import keyboardGpro from "../assets/teclado_gpro.png";
 import { ContextProvider } from "../context/Context";
-import { Link } from "react-router-dom";
 
 export default function Home() {
 	const { setDataApi } = useContext(ContextProvider);
@@ -15,7 +14,7 @@ export default function Home() {
 
 	return (
 		<Wrapper>
-			<Section>
+			<Section background="#4a6396">
 				<div className="content-home">
 					<div className="text-home">
 						<h1>
@@ -29,7 +28,6 @@ export default function Home() {
 						<Button>Conhecer</Button>
 					</div>
 					<div className="hero-home">
-						{/* <img className="mouse-hero" src={mouseGpro} alt="" /> */}
 						<img
 							className="keyboard-hero"
 							src={keyboardGpro}
@@ -38,7 +36,12 @@ export default function Home() {
 					</div>
 				</div>
 			</Section>
-			<Section className=""></Section>
+			<Section background="#000" className="">
+				teste
+			</Section>
+			<Section background="red" className="">
+				teste
+			</Section>
 		</Wrapper>
 	);
 }

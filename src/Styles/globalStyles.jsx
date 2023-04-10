@@ -30,6 +30,22 @@ export const GlobalStyles = createGlobalStyle`
         border-bottom: 1px solid white;
     }
 
+    .loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .search-btn {
+        font-size: 1.2em;
+        color: black;
+        position: relative;
+        top: 50%;
+        right: 4%;
+        cursor: pointer;
+    }
+
     span {
         text-decoration: underline;
         font-weight: bold;

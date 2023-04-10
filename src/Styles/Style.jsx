@@ -2,15 +2,14 @@ import styled from "styled-components";
 import { darken } from "polished";
 
 export const Header = styled.header`
-	background: #2b356873;
+	background: #4a6396;
 	display: flex;
 	align-items: center;
-	justify-content: ${(props) =>
-		props.search === true ? "left" : "space-between"};
+	justify-content: space-between;
 	height: 80px;
 	width: 100%;
 	padding: 0.6rem 3rem;
-	gap: ${(props) => (props.gap === true ? "1rem" : "")};
+	gap: 1rem;
 
 	.logo-header {
 		text-transform: uppercase;
@@ -25,7 +24,6 @@ export const Header = styled.header`
 	.links-header a {
 		text-align: center;
 		width: 150px;
-		/* display: inline-block; */
 		margin: 0 1.24rem;
 		color: ${(props) => props.theme.colors.text};
 		padding: 0;
@@ -69,45 +67,30 @@ export const Header = styled.header`
 		justify-content: center;
 		gap: 1.56rem;
 	}
-
-`;
-
-export const SearchBoxInput = styled.input`
-	border-radius: 5px 0px 0px 5px;
-	box-shadow: 1px 2px 3px #3d3d3d;
-	min-width: 75vw;
-	padding: 10px 30px;
-	font-size: 1.2em;
-	color: #888888;
-	flex: none;
-
-	&::placeholder {
-		color: #888888;
-	}
 `;
 
 export const Container = styled.div``;
 
-export const Wrapper = styled.main``;
+export const Wrapper = styled.main`
+	.buy-page {
+		color: black;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		gap: 1rem;
+	}
+`;
 
 export const Section = styled.section`
 	min-height: 100vh;
 	width: 100%;
-	padding: 1rem 3rem;
-
-	.content-home::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: -1;
-		min-height: 90vh;
-		width: 100%;
-		background-image: linear-gradient(65deg, #4a6396, #223e77);
-	}
+	padding: 0rem 3rem;
+	background-color: ${(props) =>
+		props.background ? props.background : ""};
 
 	.content-home {
 		min-height: 80vh;
+		width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -146,6 +129,32 @@ export const Section = styled.section`
 		max-height: 400px;
 		transform: rotate(10deg);
 	}
+
+	.left-buy_page,
+	.right-buy_page {
+		background: white;
+		height: 90vh;
+		padding: 2rem;
+		box-shadow: 1px 2px 3px #72727275;
+		border-radius: 5px;
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+	}
+
+	.left-buy_page .photo-buy_page img {
+		max-height: 100%;
+	}
+
+	.right-buy_page {
+		min-width: 20vw;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+
+	.price-buy_page .old-price {
+		text-decoration: line-through;
+	}
 `;
 
 export const Button = styled.button`
@@ -166,23 +175,25 @@ export const Button = styled.button`
 `;
 
 export const GridProducts = styled.div`
+	padding-top: 2rem;
 	min-height: 80vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	place-items: center;
 	gap: 1rem;
 `;
 
 export const CardProducts = styled.div`
 	background: white;
-	height: 280px;
-	width: 60vw;
+	height: 300px;
+	width: 44vw;
 	display: flex;
 	align-items: center;
 	box-shadow: 1px 2px 1px #2c2c2c;
 	position: relative;
 	flex: none;
+	padding: 1rem;
 	border-radius: 5px;
 
 	.photo-product {
@@ -214,32 +225,45 @@ export const CardProducts = styled.div`
 
 	.name-product {
 		text-transform: uppercase;
-		max-width: 60%;
+		max-width: 80%;
 		font-weight: bold;
 	}
 
 	.price-product {
-		background: white;
-		color: black;
-		text-align: center;
-		padding: 10px 30px;
+		color: white;
+		text-align: left;
+		padding: 0px 30px;
+		display: flex;
+		align-items: left;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	.price-product :nth-child(n) {
+		margin: 4px 0;
 	}
 
 	.old-price {
 		text-decoration: line-through;
 		font-size: 0.9em;
+		color: #c4c4c4;
 	}
 
 	.new-price {
-		font-size: 1em;
+		font-size: 1.3em;
 		font-weight: bold;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: left;
+		gap: 0.5rem;
+	}
+
+	.installments-product {
+		font-size: 0.9em;
 	}
 
 	.promo-icon {
-		color: #2d2170;
+		color: #f0f0f0;
 		font-size: 1.1em;
 	}
 
@@ -270,5 +294,5 @@ export const Badge = styled.div`
 	text-align: center;
 	padding: 1rem;
 	border-radius: 100%;
-	font-size: 0.8em;
+	font-size: 0.9em;
 `;

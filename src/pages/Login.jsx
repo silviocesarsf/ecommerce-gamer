@@ -6,6 +6,7 @@ import {
 	Input,
 	Title,
 } from "../Styles/Style";
+import { NavLink } from "react-router-dom";
 
 export default function Login() {
 	return (
@@ -25,7 +26,9 @@ export default function Login() {
 					/>
 					<Container dir="column">
 						<Button background="#5f779c">Logar</Button>
-						<span>Registrar-se</span>
+						<NavLink to="/register">
+							<span>Registrar-se</span>
+						</NavLink>
 					</Container>
 				</form>
 			</Card>

@@ -23,11 +23,17 @@ export const GlobalStyles = createGlobalStyle`
 
     a {
         text-decoration: none;
+        color: black;
     }
 
     .active {
-        margin-bottom: 1rem;
+        /* margin-bottom: 1rem; */
         border-bottom: 1px solid white;
+    }
+
+    .auth {
+        background: white;
+        color: black;
     }
 
     .loader {

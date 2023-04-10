@@ -49,11 +49,11 @@ const router = createBrowserRouter([
 				element: <BuyPage />,
 			},
 			{
-				path: "login",
+				path: "/login",
 				element: <Login />,
 			},
 			{
-				path: "register",
+				path: "/register",
 				element: <Register />,
 			},
 		],

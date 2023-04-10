@@ -10,8 +10,8 @@ function App() {
 	return (
 		<>
 			<HeaderComp />
-			{/* <Outlet /> */}
-			<Login />
+			<Outlet />
+			{/* <Login /> */}
 		</>
 	);
 }

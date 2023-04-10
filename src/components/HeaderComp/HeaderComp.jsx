@@ -43,25 +43,29 @@ export default function HeaderComp() {
 			</Link>
 			<div className="links-header">
 				<ul>
-					<NavLink activeclassname="active" to="/mouses">
+					<NavLink activeclassname to="/mouses">
 						Mouses
 					</NavLink>
-					<NavLink activeclassname="active" to="/headsets">
+					<NavLink activeclassname to="/headsets">
 						Headsets
 					</NavLink>
-					<NavLink activeclassname="active" to="/teclados">
+					<NavLink activeclassname to="/teclados">
 						Teclados
 					</NavLink>
-					<NavLink activeclassname="active" to="/monitores">
+					<NavLink activeclassname to="/monitores">
 						Monitores
 					</NavLink>
 				</ul>
 			</div>
 			<div className="login-header">
-				<Button className="login-btn">Login</Button>
-				<Button border={false} className="register-btn">
-					Cadastro
-				</Button>
+				<NavLink to="/login">
+					<Button className="login-btn">Login</Button>
+				</NavLink>
+				<NavLink to="/register">
+					<Button border={false} className="register-btn">
+						Cadastro
+					</Button>
+				</NavLink>
 			</div>
 		</Header>
 	);

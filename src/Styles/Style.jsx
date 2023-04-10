@@ -428,7 +428,7 @@ export const Modal = styled.div`
 export const Card = styled.div`
 	background: white;
 	width: ${(props) => props.width};
-	height: 80vh;
+	height: ${(props) => (props.height ? props.height : "80vh")};
 	border-radius: 5px;
 	color: black;
 	box-shadow: 1px 2px 3px #474747;

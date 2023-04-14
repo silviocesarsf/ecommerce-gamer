@@ -11,7 +11,7 @@ import { AiFillFire } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
 export default function ProductsList({ product }) {
-	const { dataApi, setDataApi, fetchData, isLoading } =
+	const { dataApi, setDataApi, fetchData, isLoading, isMobile } =
 		useContext(ContextProvider);
 
 	const navigate = useNavigate();
@@ -24,7 +24,7 @@ export default function ProductsList({ product }) {
 			"selectedProduct",
 			JSON.stringify(product)
 		);
-		navigate("/buypage");
+		navigate("/detailsProduct");
 	};
 
 	useEffect(() => {
@@ -48,12 +48,19 @@ export default function ProductsList({ product }) {
 						</div>
 						<div className="info-product">
 							<div className="name-product">
-								{product.title.length > 30
-									? `${product.title.slice(
-											0,
-											30
-									  )}...`
-									: product.title}
+								{isMobile ? (
+									`${product.title.slice(0, 20)}...`
+								) : (
+									<>
+										{" "}
+										{product.title.length > 30
+											? `${product.title.slice(
+													0,
+													30
+											  )}...`
+											: product.title}{" "}
+									</>
+								)}
 							</div>
 							<div className="price-product">
 								<div className="old-price">

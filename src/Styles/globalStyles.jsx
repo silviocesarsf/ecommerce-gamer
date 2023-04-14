@@ -11,6 +11,12 @@ export const GlobalStyles = createGlobalStyle`
         outline: none;
     }
 
+    html {
+        min-height: 100vh;
+        width: 100%;
+        z-index: -1;
+    }
+
     body {
         font-family: "Poppins";
         color: ${(props) => props.theme.colors.text};
@@ -23,11 +29,10 @@ export const GlobalStyles = createGlobalStyle`
 
     a {
         text-decoration: none;
-        color: black;
+        color: white;
     }
 
     .active {
-        /* margin-bottom: 1rem; */
         border-bottom: 1px solid white;
     }
 
@@ -53,12 +58,9 @@ export const GlobalStyles = createGlobalStyle`
         width: 20px;
     }
 
-    .search-btn {
-        font-size: 1.2em;
+    span {
         color: black;
-        position: relative;
-        top: 50%;
-        right: 4%;
+        text-decoration: underline;
         cursor: pointer;
     }
 
@@ -68,9 +70,6 @@ export const GlobalStyles = createGlobalStyle`
     }
     }   
 
-    span {
-        text-decoration: underline;
-        cursor: pointer;
-    }
+    
 
 `;

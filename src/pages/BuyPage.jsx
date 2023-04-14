@@ -1,132 +1,147 @@
-import React, { useContext, useEffect } from "react";
-import { ContextProvider } from "../context/Context";
+import React from "react";
 import {
 	Button,
-	ButtonBuy,
-	Input,
+	Card,
+	Container,
 	Section,
-	Wrapper,
+	Title,
 } from "../Styles/Style";
-import userPlaceholderImage from "../assets/placeholder-user.jpg";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import ModalComp from "../components/Modal/ModalComp";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function BuyPage() {
-	const { isModal, setIsModal, isLogged, setIsLogged } =
-		useContext(ContextProvider);
-
-	const navigate = useNavigate();
+	const [counterPill, setCounterPill] = useState(1);
 
 	const selectedProduct = JSON.parse(
 		localStorage.getItem("selectedProduct")
 	);
 
-	const handleIsModalOpen = () => {
-		setIsModal(!isModal);
+	const priceProduct =
+		parseFloat(selectedProduct.price.toFixed(1)) * counterPill;
+
+	const freightPrice = 21.43;
+
+	const handleAddPill = () => {
+		setCounterPill(counterPill + 1);
 	};
 
-	const handleBuy = () => {
-		if (isLogged) {
-			navigate("/");
-		} else {
-			alert("Você precisa logar!");
-			setTimeout(() => {
-				navigate("/login");
-			}, [2000]);
+	const handleSubPill = () => {
+		setCounterPill(counterPill - 1);
+		if (counterPill < 2) {
+			setCounterPill(1);
 		}
 	};
 
+	const totalPrice = priceProduct + freightPrice;
+
 	return (
-		<Wrapper>
-			{isModal && <ModalComp />}
-			<Section className="buy-page">
-				<div className="left-buy_page">
-					<div className="info-product_selected">
-						<div className="photo-buy_page">
-							<img
-								src={selectedProduct.thumbnail}
-								alt={selectedProduct.id}
-							/>
-						</div>
-						<div className="info-buy_page">
-							<div className="title-buy_page">
-								{selectedProduct.title.length > 50
-									? `${selectedProduct.title.slice(
-											0,
-											50
-									  )}...`
-									: selectedProduct.title}
-							</div>
-							<div className="description-buy_page">
-								<p>
-									aqui é a descricao disgraça Lorem
-									ipsum dolor sit amet consectetur
-									adipisicing elit. Eius sint
-									consectetur, quasi quae beatae
-									nesciunt, culpa deserunt voluptas
-									mollitia odit magni voluptates
-									aspernatur laudantium earum
-									voluptatum est pariatur eligendi.
-									Eum.
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet
-									consectetur adipisicing elit. Illo
-									quis exercitationem laudantium,
-									numquam accusamus vitae velit
-									laborum maiores a corporis,
-									molestiae ea distinctio maxime sit
-									ullam nostrum officia, mollitia
-									amet?
-								</p>
-							</div>
-						</div>
-					</div>
-					<div className="seller-infos">
-						<div className="photo-seller">
-							<img src={userPlaceholderImage} alt="" />
-						</div>
-						<div className="name-seller">
-							{selectedProduct.seller.nickname}
-						</div>
-					</div>
+		<Section background="white">
+			<Container padding="2rem" align="flex-start" gap="2rem">
+				<div className="table-product">
+					<table>
+						<tr>
+							<th className="table-product">Produto</th>
+							<th className="table-quantity">Qtd</th>
+							<th className="table-delivery">
+								Entrega
+							</th>
+							<th className="table-price">Preço</th>
+						</tr>
+						<tbody>
+							<tr>
+								<td>
+									<Container gap="1rem">
+										<img
+											src={
+												selectedProduct.thumbnail
+											}
+											alt={selectedProduct.id}
+										/>
+										{selectedProduct.title
+											.length > 70
+											? `${selectedProduct.title.slice(
+													0,
+													70
+											  )}...`
+											: selectedProduct.title}
+									</Container>
+								</td>
+								<td>
+									<Container
+										width="120px"
+										gap="10px"
+										justify="space-between"
+										className="pill-quantity_container"
+									>
+										<div
+											onClick={handleSubPill}
+											className="pill-sub"
+										>
+											-
+										</div>
+										<div className="pill-quantity">
+											{counterPill}
+										</div>
+										<div
+											onClick={handleAddPill}
+											className="pill-add"
+										>
+											+
+										</div>
+									</Container>
+								</td>
+								<td>Receba até dia 30 de abril</td>
+								<td>R$ {priceProduct}</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-				<div className="right-buy_page">
-					<div className="price-buy_page">
-						<div className="old-price">
-							{selectedProduct.original_price
-								? `De: R$ ${selectedProduct.original_price}`
-								: null}
-						</div>
-						<div className="new-price">
-							{selectedProduct.original_price
-								? `Por: R$ ${selectedProduct.price}`
-								: `R$ ${selectedProduct.price}`}
-						</div>
-						<div className="installments">
-							Em até{" "}
-							{selectedProduct.installments.quantity}x
-							de R${selectedProduct.installments.amount}
-						</div>
-						<div className="methods-payments">
-							<span onClick={handleIsModalOpen}>
-								Ver mais formas de pagamentos
-							</span>
-						</div>
+				<Card
+					shadow={false}
+					background="#f8f8f8"
+					width="40vw"
+					padding="1rem"
+					className="resume-order"
+					justify="space-around"
+				>
+					<div className="resume-order_header">
+						<Title fontSize="1.2em">
+							Resumo do pedido
+						</Title>
 					</div>
-					<div className="freight-buy_page">
-						<label>Digite seu CEP</label>
-						<Input type="number" />
+					<div className="resume-order_infos">
+						<Container>
+							<div className="resume-order_quantity">
+								{counterPill}x Produto
+							</div>
+							<div className="resume-order_price">
+								R$ {priceProduct}
+							</div>
+						</Container>
+						<Container>
+							<div className="resume-order_freight">
+								Frete
+							</div>
+							<div className="resume-order_freight_price">
+								R$ {freightPrice}
+							</div>
+						</Container>
 					</div>
-					<div className="btn-buy_container">
-						<ButtonBuy onClick={handleBuy}>
-							Comprar
-						</ButtonBuy>
-						<AiOutlineShoppingCart className="btn-add_to_cart" />
+					<div className="resume-order_total">
+						<Container dir="column" justify="center">
+							<div>
+								Total
+								<div className="total-price">
+									R$ {totalPrice}
+								</div>
+							</div>
+							<Button background="#3f3c3c">
+								Comprar
+							</Button>
+						</Container>
 					</div>
-				</div>
-			</Section>
-		</Wrapper>
+				</Card>
+			</Container>
+		</Section>
 	);
 }

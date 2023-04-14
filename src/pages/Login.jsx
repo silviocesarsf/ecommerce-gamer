@@ -23,7 +23,7 @@ export default function Login() {
 		setIsLoading,
 	} = useContext(ContextProvider);
 
-    const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	const handleEmailLogin = (e) => {
 		setEmailLogin(e.target.value);
@@ -39,11 +39,11 @@ export default function Login() {
 			passwordLogin === userObj.passwordUser
 		) {
 			alert("Logado com sucesso");
-            setIsLoading(true)
+			setIsLoading(true);
 			setTimeout(() => {
 				setIsLogged(true);
-                navigate("/")
-                setIsLoading(false)
+				navigate("/buypage");
+				setIsLoading(false);
 			}, [1000]);
 		} else {
 			alert("Verifique as informações e tente novamente.");

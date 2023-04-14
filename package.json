@@ -12,8 +12,10 @@
     "framer-motion": "^10.11.2",
     "polished": "^4.2.2",
     "react": "^18.2.0",
+    "react-burger-menu": "^3.0.9",
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^5.3.4",
+    "react-responsive": "^9.0.2",
     "react-router-dom": "^6.10.0"
   },
   "devDependencies": {

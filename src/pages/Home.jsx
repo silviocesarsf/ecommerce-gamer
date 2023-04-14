@@ -36,12 +36,6 @@ export default function Home() {
 					</div>
 				</div>
 			</Section>
-			<Section background="#000" className="">
-				teste
-			</Section>
-			<Section background="red" className="">
-				teste
-			</Section>
 		</Wrapper>
 	);
 }

@@ -65,7 +65,6 @@ export default function Register() {
 		<Container height="100%">
 			<Card className="login-card" height="90vh" width="30vw">
 				<Title>Registro</Title>
-
 				<Input
 					type="text"
 					placeholder="Digite seu nome"
@@ -96,7 +95,7 @@ export default function Register() {
 						Registrar-se
 					</Button>
 					<NavLink to="/login">
-						<span>Logar</span>
+						<span color="black">Logar</span>
 					</NavLink>
 				</Container>
 			</Card>

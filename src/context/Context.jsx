@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 export const ContextProvider = createContext();
 
@@ -15,6 +16,12 @@ export const Context = ({ children }) => {
 	const [passwordRegister, setPasswordRegister] = useState("");
 	const [passwordConfirm, setPasswordConfirm] = useState("");
 	const [nameRegister, setNameRegister] = useState("");
+	const [cepNumber, setCepNumber] = useState(Number);
+	const [cepData, setCepData] = useState({});
+	const [cepError, setCepError] = useState(false);
+
+	const isMobile = useMediaQuery({ query: "(max-width: 985px)" });
+
 	const userObj = {
 		nameUser: localStorage.getItem("name_user"),
 		emailUser: localStorage.getItem("email_user"),
@@ -35,6 +42,28 @@ export const Context = ({ children }) => {
 				console.log(err);
 			})
 			.finally(setIsLoading(true));
+	};
+
+	const fetchCep = () => {
+		if (cepNumber) {
+			fetch(`https://viacep.com.br/ws/${cepNumber}/json/`)
+				.then((r) => r.json())
+				.then((response) => {
+					console.log(response);
+					setCepData(response);
+					setIsLoading(false);
+					setCepError(false);
+				})
+				.catch((err) => {
+					console.log(err);
+					setCepError(true);
+					setIsLoading(false);
+					setCepData("");
+				})
+				.finally(setIsLoading(true));
+		} else {
+			alert("Digite um cep");
+		}
 	};
 
 	return (
@@ -66,6 +95,14 @@ export const Context = ({ children }) => {
 				nameRegister,
 				setNameRegister,
 				userObj,
+				cepNumber,
+				setCepNumber,
+				fetchCep,
+				setCepData,
+				cepData,
+				cepError,
+				setCepError,
+				isMobile,
 			}}
 		>
 			{children}
